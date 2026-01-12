@@ -563,7 +563,7 @@
     }
     
     .service-card:active {
-        transform: scale(0.98);
+        transform: translateY(-1px);
     }
     
     .service-icon {
@@ -1411,7 +1411,7 @@
     }
     
     .service-card:active {
-        transform: scale(0.97);
+        transform: translateY(-1px);
         transition: transform 0.1s ease;
     }
     
