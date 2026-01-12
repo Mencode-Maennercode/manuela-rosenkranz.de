@@ -282,11 +282,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Add floating animation to service icons
+    // Add floating animation to service icons (desktop only)
     const serviceIcons = document.querySelectorAll('.service-icon');
-    serviceIcons.forEach((icon, index) => {
-        icon.style.animation = `float 3s ease-in-out infinite ${index * 0.5}s`;
-    });
+    if (window.innerWidth > 768) {
+        serviceIcons.forEach((icon, index) => {
+            icon.style.animation = `float 3s ease-in-out infinite ${index * 0.5}s`;
+        });
+    }
     
     modalOverlay.addEventListener('click', function() {
         closeModal();
