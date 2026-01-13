@@ -501,7 +501,7 @@ img {
 .hero-quote {
     position: relative;
     max-width: 500px;
-    margin: 40px auto 0;
+    margin: 60px auto 0;
     text-align: center;
     opacity: 0;
     transform: translateY(20px);
@@ -575,7 +575,7 @@ img {
     gap: 20px;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 40px;
+    margin-top: 60px;
     opacity: 0;
     transform: translateY(20px);
     animation: buttonsSlideIn 1s ease-out 1.4s forwards;
