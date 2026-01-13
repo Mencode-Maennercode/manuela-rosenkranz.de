@@ -503,10 +503,7 @@ img {
     max-width: 600px;
     margin: 35px auto 0;
     padding: 30px 40px;
-    background: rgba(22, 28, 44, 0.85);
-    backdrop-filter: blur(15px);
-    border-radius: 20px;
-    border: 1px solid rgba(119, 161, 217, 0.3);
+    background: transparent;
     text-align: center;
     opacity: 0;
     transform: translateY(20px);
@@ -524,9 +521,10 @@ img {
     font-family: 'Crimson Pro', serif;
     font-size: 4rem;
     font-weight: 300;
-    color: rgba(119, 161, 217, 0.6);
+    color: var(--color-secondary);
     position: absolute;
     line-height: 1;
+    opacity: 0.8;
 }
 
 .quote-mark.opening {
@@ -543,26 +541,26 @@ img {
     font-family: 'Crimson Pro', serif;
     font-size: 1.3rem;
     font-weight: 400;
-    color: #ffffff;
+    color: var(--color-white);
     line-height: 1.6;
     margin: 0 0 15px 0;
     font-style: italic;
     position: relative;
     z-index: 2;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .quote-author {
     font-family: 'Montserrat', sans-serif;
     font-size: 0.9rem;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--color-accent);
     margin: 0;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     position: relative;
     z-index: 2;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-buttons {
