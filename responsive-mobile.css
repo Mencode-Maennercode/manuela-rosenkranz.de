@@ -398,8 +398,38 @@
     
     .hero-text {
         font-size: clamp(0.95rem, 2.5vw, 1.1rem);
-        margin-bottom: 30px;
+        margin-bottom: 25px;
         line-height: 1.6;
+    }
+    
+    .hero-quote {
+        margin: 25px auto 0;
+        padding: 25px 30px;
+        max-width: 90%;
+    }
+    
+    .quote-mark {
+        font-size: 3rem;
+    }
+    
+    .quote-mark.opening {
+        top: 8px;
+        left: 15px;
+    }
+    
+    .quote-mark.closing {
+        bottom: 8px;
+        right: 15px;
+    }
+    
+    .quote-text {
+        font-size: 1.1rem;
+        line-height: 1.5;
+        margin-bottom: 12px;
+    }
+    
+    .quote-author {
+        font-size: 0.8rem;
     }
     
     /* Mobile-Optimized CTA Buttons */
@@ -970,7 +1000,37 @@
     
     .hero-text {
         font-size: 0.92rem;
-        margin-bottom: 25px;
+        margin-bottom: 20px;
+    }
+    
+    .hero-quote {
+        margin: 20px auto 0;
+        padding: 20px 25px;
+        max-width: 95%;
+    }
+    
+    .quote-mark {
+        font-size: 2.5rem;
+    }
+    
+    .quote-mark.opening {
+        top: 6px;
+        left: 12px;
+    }
+    
+    .quote-mark.closing {
+        bottom: 6px;
+        right: 12px;
+    }
+    
+    .quote-text {
+        font-size: 1rem;
+        line-height: 1.4;
+        margin-bottom: 10px;
+    }
+    
+    .quote-author {
+        font-size: 0.75rem;
     }
     
     .hero-buttons {
