@@ -505,7 +505,7 @@ img {
     text-align: center;
     opacity: 0;
     transform: translateY(20px);
-    animation: quoteSlideIn 1s ease-out 1.6s forwards;
+    animation: quoteSlideIn 1s ease-out 1.2s forwards;
 }
 
 @keyframes quoteSlideIn {
@@ -578,7 +578,7 @@ img {
     margin-top: 40px;
     opacity: 0;
     transform: translateY(20px);
-    animation: buttonsSlideIn 1s ease-out 1.8s forwards;
+    animation: buttonsSlideIn 1s ease-out 1.4s forwards;
 }
 
 @keyframes buttonsSlideIn {

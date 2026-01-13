@@ -396,12 +396,6 @@
         font-weight: 400;
     }
     
-    .hero-text {
-        font-size: clamp(0.95rem, 2.5vw, 1.1rem);
-        margin-bottom: 25px;
-        line-height: 1.6;
-    }
-    
     .hero-quote {
         margin: 25px auto 0;
         max-width: 90%;
@@ -993,11 +987,6 @@
     .hero-subtitle {
         font-size: clamp(1rem, 3.5vw, 1.25rem);
         margin-bottom: 12px;
-    }
-    
-    .hero-text {
-        font-size: 0.92rem;
-        margin-bottom: 20px;
     }
     
     .hero-quote {
