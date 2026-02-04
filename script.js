@@ -41,13 +41,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Hide privacy overlay
                 privacyOverlay.style.display = 'none';
                 
-                // Enable contact form
-                contactFormContainer.classList.remove('contact-form-disabled');
-                
-                // Enable all form inputs
-                contactFormInputs.forEach(input => {
-                    input.disabled = false;
-                });
+                // Show contact form
+                contactFormContainer.style.display = 'block';
                 
                 // Store consent in localStorage
                 localStorage.setItem('privacyConsent', 'true');
@@ -57,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Check if user has already consented
         if (localStorage.getItem('privacyConsent') === 'true') {
-            // Auto-enable form if consent was given
+            // Auto-show form if consent was given
             setTimeout(() => {
                 privacyAgreement.checked = true;
                 acceptPrivacyBtn.disabled = false;
