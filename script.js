@@ -8,6 +8,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalOverlay = document.querySelector('.modal-overlay');
     const cookieBanner = document.querySelector('.cookie-banner');
     
+    // Privacy overlay elements
+    const privacyAgreement = document.getElementById('privacy-agreement');
+    const acceptPrivacyBtn = document.getElementById('accept-privacy');
+    const privacyOverlay = document.getElementById('privacy-overlay');
+    const contactFormContainer = document.getElementById('contact-form-container');
+    const contactFormInputs = contactFormContainer ? contactFormContainer.querySelectorAll('input, textarea, button') : [];
+    
     // Check cookie consent
     if (!localStorage.getItem('cookieConsent')) {
         cookieBanner.style.display = 'block';
@@ -18,6 +25,46 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('cookieConsent', 'true');
         cookieBanner.style.display = 'none';
     };
+    
+    // Privacy overlay functionality
+    if (privacyAgreement && acceptPrivacyBtn && privacyOverlay && contactFormContainer) {
+        // Enable/disable accept button based on checkbox
+        privacyAgreement.addEventListener('change', function() {
+            acceptPrivacyBtn.disabled = !this.checked;
+            acceptPrivacyBtn.style.opacity = this.checked ? '1' : '0.6';
+            acceptPrivacyBtn.style.cursor = this.checked ? 'pointer' : 'not-allowed';
+        });
+        
+        // Handle accept privacy button click
+        acceptPrivacyBtn.addEventListener('click', function() {
+            if (privacyAgreement.checked) {
+                // Hide privacy overlay
+                privacyOverlay.style.display = 'none';
+                
+                // Enable contact form
+                contactFormContainer.classList.remove('contact-form-disabled');
+                
+                // Enable all form inputs
+                contactFormInputs.forEach(input => {
+                    input.disabled = false;
+                });
+                
+                // Store consent in localStorage
+                localStorage.setItem('privacyConsent', 'true');
+                localStorage.setItem('privacyConsentDate', new Date().toISOString());
+            }
+        });
+        
+        // Check if user has already consented
+        if (localStorage.getItem('privacyConsent') === 'true') {
+            // Auto-enable form if consent was given
+            setTimeout(() => {
+                privacyAgreement.checked = true;
+                acceptPrivacyBtn.disabled = false;
+                acceptPrivacyBtn.click();
+            }, 100);
+        }
+    }
     
     // Mobile navigation toggle
     navToggle.addEventListener('click', function() {
