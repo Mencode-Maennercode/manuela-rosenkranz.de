@@ -339,10 +339,17 @@
                 </div>
 
                 <div class="contact-form-wrapper">
-                    <!-- Privacy Agreement Overlay -->
-                    <div id="privacy-overlay" class="privacy-overlay">
-                        <div class="privacy-content">
-                            <h3>Datenschutzeinwilligung erforderlich</h3>
+                    <!-- Privacy Agreement Section (collapsible) -->
+                    <div id="privacy-section" class="privacy-section">
+                        <div class="privacy-header">
+                            <h3>Datenschutzeinwilligung</h3>
+                            <button type="button" id="toggle-privacy" class="toggle-btn" style="display: none;">
+                                <span id="toggle-icon">▼</span>
+                                Datenschutzerklärung
+                            </button>
+                        </div>
+                        
+                        <div id="privacy-content" class="privacy-content">
                             <p>Bevor Sie das Kontaktformular nutzen, müssen Sie unsere Datenschutzerklärung gelesen und akzeptiert haben.</p>
                             
                             <div class="privacy-text">
@@ -375,6 +382,7 @@
 
                     <!-- Contact Form (initially hidden) -->
                     <div id="contact-form-container" style="display: none;">
+                        <h3 class="form-heading">Kontaktformular</h3>
                         <form class="contact-form">
                             <div class="form-group">
                                 <label for="name">Name *</label>

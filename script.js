@@ -11,7 +11,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Privacy overlay elements
     const privacyAgreement = document.getElementById('privacy-agreement');
     const acceptPrivacyBtn = document.getElementById('accept-privacy');
-    const privacyOverlay = document.getElementById('privacy-overlay');
+    const privacySection = document.getElementById('privacy-section');
+    const privacyContent = document.getElementById('privacy-content');
+    const togglePrivacyBtn = document.getElementById('toggle-privacy');
+    const toggleIcon = document.getElementById('toggle-icon');
     const contactFormContainer = document.getElementById('contact-form-container');
     const contactFormInputs = contactFormContainer ? contactFormContainer.querySelectorAll('input, textarea, button') : [];
     
@@ -27,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     
     // Privacy overlay functionality
-    if (privacyAgreement && acceptPrivacyBtn && privacyOverlay && contactFormContainer) {
+    if (privacyAgreement && acceptPrivacyBtn && privacySection && privacyContent && togglePrivacyBtn && contactFormContainer) {
         // Enable/disable accept button based on checkbox
         privacyAgreement.addEventListener('change', function() {
             acceptPrivacyBtn.disabled = !this.checked;
@@ -38,11 +41,13 @@ document.addEventListener('DOMContentLoaded', function() {
         // Handle accept privacy button click
         acceptPrivacyBtn.addEventListener('click', function() {
             if (privacyAgreement.checked) {
-                // Hide privacy overlay
-                privacyOverlay.style.display = 'none';
-                
                 // Show contact form
                 contactFormContainer.style.display = 'block';
+                
+                // Collapse privacy section
+                privacyContent.classList.add('collapsed');
+                togglePrivacyBtn.classList.add('collapsed');
+                togglePrivacyBtn.style.display = 'flex';
                 
                 // Store consent in localStorage
                 localStorage.setItem('privacyConsent', 'true');
@@ -50,9 +55,24 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
+        // Handle toggle button click
+        togglePrivacyBtn.addEventListener('click', function() {
+            const isCollapsed = privacyContent.classList.contains('collapsed');
+            
+            if (isCollapsed) {
+                // Expand privacy section
+                privacyContent.classList.remove('collapsed');
+                togglePrivacyBtn.classList.remove('collapsed');
+            } else {
+                // Collapse privacy section
+                privacyContent.classList.add('collapsed');
+                togglePrivacyBtn.classList.add('collapsed');
+            }
+        });
+        
         // Check if user has already consented
         if (localStorage.getItem('privacyConsent') === 'true') {
-            // Auto-show form if consent was given
+            // Auto-show form and collapse privacy if consent was given
             setTimeout(() => {
                 privacyAgreement.checked = true;
                 acceptPrivacyBtn.disabled = false;
