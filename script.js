@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     
     // Privacy overlay functionality
-    if (privacyAgreement && acceptPrivacyBtn && privacySection && privacyContent && togglePrivacyBtn && contactFormContainer) {
+    if (privacyAgreement && acceptPrivacyBtn && privacyContent && contactFormContainer) {
         // Enable/disable accept button based on checkbox
         privacyAgreement.addEventListener('change', function() {
             acceptPrivacyBtn.disabled = !this.checked;
@@ -41,13 +41,17 @@ document.addEventListener('DOMContentLoaded', function() {
         // Handle accept privacy button click
         acceptPrivacyBtn.addEventListener('click', function() {
             if (privacyAgreement.checked) {
-                // Show contact form
-                contactFormContainer.style.display = 'block';
-                
                 // Collapse privacy section
                 privacyContent.classList.add('collapsed');
-                togglePrivacyBtn.classList.add('collapsed');
-                togglePrivacyBtn.style.display = 'flex';
+                
+                // Show toggle button
+                if (togglePrivacyBtn) {
+                    togglePrivacyBtn.style.display = 'flex';
+                    togglePrivacyBtn.classList.add('collapsed');
+                }
+                
+                // Show contact form
+                contactFormContainer.style.display = 'block';
                 
                 // Store consent in localStorage
                 localStorage.setItem('privacyConsent', 'true');
@@ -56,23 +60,22 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // Handle toggle button click
-        togglePrivacyBtn.addEventListener('click', function() {
-            const isCollapsed = privacyContent.classList.contains('collapsed');
-            
-            if (isCollapsed) {
-                // Expand privacy section
-                privacyContent.classList.remove('collapsed');
-                togglePrivacyBtn.classList.remove('collapsed');
-            } else {
-                // Collapse privacy section
-                privacyContent.classList.add('collapsed');
-                togglePrivacyBtn.classList.add('collapsed');
-            }
-        });
+        if (togglePrivacyBtn) {
+            togglePrivacyBtn.addEventListener('click', function() {
+                const isCollapsed = privacyContent.classList.contains('collapsed');
+                
+                if (isCollapsed) {
+                    privacyContent.classList.remove('collapsed');
+                    togglePrivacyBtn.classList.remove('collapsed');
+                } else {
+                    privacyContent.classList.add('collapsed');
+                    togglePrivacyBtn.classList.add('collapsed');
+                }
+            });
+        }
         
         // Check if user has already consented
         if (localStorage.getItem('privacyConsent') === 'true') {
-            // Auto-show form and collapse privacy if consent was given
             setTimeout(() => {
                 privacyAgreement.checked = true;
                 acceptPrivacyBtn.disabled = false;

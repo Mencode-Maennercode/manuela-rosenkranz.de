@@ -2515,15 +2515,18 @@ img {
 }
 
 .privacy-content {
-    padding: 0 40px 40px;
-    transition: all 0.3s ease;
+    padding: 20px 40px 40px;
+    transition: all 0.4s ease;
     overflow: hidden;
+    max-height: 1000px;
+    opacity: 1;
 }
 
 .privacy-content.collapsed {
     padding: 0 40px;
     max-height: 0;
     opacity: 0;
+    pointer-events: none;
 }
 
 .privacy-content h3 {
