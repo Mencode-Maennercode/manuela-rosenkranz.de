@@ -1329,8 +1329,23 @@ img {
     margin-bottom: 20px;
 }
 
+.pricing-duration {
+    font-size: 1rem;
+    color: var(--color-text-light);
+    font-weight: 500;
+    margin-bottom: 15px;
+    padding: 4px 12px;
+    background: rgba(119, 161, 217, 0.1);
+    border-radius: 20px;
+    display: inline-block;
+}
+
 .pricing-card.featured .duration {
     color: rgba(255, 255, 255, 0.9);
+}
+
+.pricing-card.featured .pricing-description {
+    color: rgba(255, 255, 255, 0.95);
 }
 
 .pricing-price {
@@ -1343,10 +1358,6 @@ img {
 .pricing-description {
     font-size: 0.95rem;
     color: var(--color-text-light);
-}
-
-.pricing-card.featured .pricing-description {
-    color: rgba(255, 255, 255, 0.95);
 }
 
 .pricing-note {
