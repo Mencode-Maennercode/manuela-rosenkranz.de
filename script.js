@@ -338,6 +338,69 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
     
+    // Collapsible service cards functionality
+    const collapsibleCards = document.querySelectorAll('.service-card.collapsible');
+    
+    const closeAllCards = function() {
+        collapsibleCards.forEach(c => {
+            const icon = c.querySelector('.expand-icon');
+            const content = c.querySelector('.service-content');
+            if (icon) {
+                icon.style.transform = 'rotate(0deg)';
+            }
+            if (content) {
+                content.style.display = 'none';
+            }
+            c.classList.remove('open');
+        });
+    };
+    
+    collapsibleCards.forEach((card) => {
+        const headerTitle = card.querySelector('.service-header-title');
+        const content = card.querySelector('.service-content');
+        const expandIcon = card.querySelector('.expand-icon');
+        
+        // Force initial closed state with display none
+        if (content) {
+            content.style.display = 'none';
+        }
+        
+        const toggleCard = function() {
+            const isOpen = card.classList.contains('open');
+            
+            if (isOpen) {
+                // Close this card
+                expandIcon.style.transform = 'rotate(0deg)';
+                if (content) {
+                    content.style.display = 'none';
+                }
+                card.classList.remove('open');
+            } else {
+                // Close all other cards first
+                closeAllCards();
+                
+                // Then open this card
+                expandIcon.style.transform = 'rotate(180deg)';
+                if (content) {
+                    content.style.display = 'block';
+                    content.style.padding = '0 30px 30px 30px';
+                }
+                card.classList.add('open');
+            }
+        };
+        
+        if (headerTitle && expandIcon) {
+            // Click on header title
+            headerTitle.addEventListener('click', toggleCard);
+            
+            // Click on expand icon
+            expandIcon.addEventListener('click', function(e) {
+                e.stopPropagation(); // Prevent double-trigger
+                toggleCard();
+            });
+        }
+    });
+    
     // Add parallax effect to hero background
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;

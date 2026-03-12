@@ -986,9 +986,12 @@ img {
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
+    margin-top: 60px;
     margin-bottom: 80px;
+    align-items: start;
+    grid-auto-rows: auto;
 }
 
 @media (max-width: 1024px) {
@@ -1009,14 +1012,73 @@ img {
 .service-card {
     background: var(--color-white);
     border-radius: 20px;
-    overflow: hidden;
+    overflow: hidden !important;
     box-shadow: 0 4px 20px rgba(45, 64, 89, 0.08);
     transition: var(--transition-smooth);
-    cursor: pointer;
     position: relative;
     border: 1px solid rgba(45, 64, 89, 0.05);
     opacity: 0;
     transform: translateY(20px);
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    contain: layout style paint;
+}
+
+.service-card.collapsible {
+    cursor: default;
+    isolation: isolate;
+}
+
+.service-content-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden !important;
+    width: 100%;
+    max-width: 100%;
+}
+
+.service-header-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.service-header-title:hover {
+    background-color: rgba(119, 161, 217, 0.03);
+}
+
+.service-header-title h3 {
+    font-size: 1.4rem;
+    margin: 0;
+    color: var(--color-text);
+}
+
+.expand-icon {
+    font-size: 18px;
+    color: var(--color-secondary);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    margin-left: 15px;
+    font-weight: bold;
+    background: rgba(119, 161, 217, 0.1);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--color-secondary);
+    cursor: pointer;
+}
+
+.expand-icon:hover {
+    background: var(--color-secondary);
+    color: white;
+    transform: scale(1.1);
 }
 
 .services.visible .service-card:nth-child(1) {
@@ -1241,19 +1303,98 @@ img {
     margin: 0;
 }
 
-.service-content {
+.service-card:not(.collapsible) .service-content {
     padding: 30px;
 }
 
+div.service-card.collapsible .service-content {
+    max-height: 0 !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out, opacity 0.3s ease, visibility 0s 0.4s;
+    padding: 0 30px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+div.service-card.collapsible.open .service-content {
+    max-height: 2000px !important;
+    overflow: visible !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out, opacity 0.3s ease, visibility 0s;
+    padding: 0 30px 30px 30px !important;
+}
+
+.service-card.collapsible .service-content ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.service-card.collapsible .service-content ul li {
+    color: var(--color-text-light);
+    line-height: 1.8;
+    margin-bottom: 15px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.service-card.collapsible .service-content ul li:last-child {
+    margin-bottom: 0;
+}
+
+.service-card.collapsible .service-content ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--color-secondary);
+    font-weight: bold;
+}
+
 @media (max-width: 768px) {
-    .service-content {
+    .service-card:not(.collapsible) .service-content {
         padding: 25px 20px;
+    }
+    
+    div.service-card.collapsible .service-content {
+        max-height: 0 !important;
+        overflow: hidden !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        padding: 0 25px !important;
+    }
+    
+    div.service-card.collapsible.open .service-content {
+        max-height: 2000px !important;
+        overflow: visible !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        padding: 0 25px 25px 25px !important;
     }
 }
 
 @media (max-width: 480px) {
-    .service-content {
+    .service-card:not(.collapsible) .service-content {
         padding: 20px 15px;
+    }
+    
+    div.service-card.collapsible .service-content {
+        max-height: 0 !important;
+        overflow: hidden !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        padding: 0 20px !important;
+    }
+    
+    div.service-card.collapsible.open .service-content {
+        max-height: 2000px !important;
+        overflow: visible !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        padding: 0 20px 20px 20px !important;
     }
 }
 
