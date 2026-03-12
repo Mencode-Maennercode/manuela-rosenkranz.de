@@ -1,0 +1,29 @@
+# Robots.txt für www.manuela-rosenkranz.de
+# Optimiert für Google Ranking
+
+User-agent: *
+Allow: /
+Disallow: /cgi-bin/
+Disallow: /*.json$
+Disallow: /private/
+
+# Sitemap
+Sitemap: https://www.manuela-rosenkranz.de/sitemap.xml
+
+# Crawl-delay für schonenden Serverzugriff
+Crawl-delay: 1
+
+# Spezielle Anweisungen für Google
+User-agent: Googlebot
+Allow: /
+Disallow: /private/
+
+# Spezielle Anweisungen für Bing
+User-agent: Bingbot
+Allow: /
+Disallow: /private/
+
+# Bilder-Crawler
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /icons/

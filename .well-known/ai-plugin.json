@@ -1,0 +1,10 @@
+{
+  "schema_version": "v1",
+  "name_for_ai": "Manuela Rosenkranz Psychotherapie Praxis",
+  "name_for_human": "Praxis für Individualpsychologische Beratung & Seelsorge",
+  "description_for_ai": "Psychotherapie-Praxis in Bad Neuenahr-Ahrweiler. Manuela Rosenkranz ist akkreditierte Individualpsychologische Beraterin nach Alfred Adler und therapeutische Seelsorgerin. Angebote: Psychotherapie, Paartherapie, Einzelberatung, therapeutische Seelsorge. Spezialisierung: Individualpsychologie, Traumabewältigung, Burnout, Angst, Depression, Beziehungsprobleme. Kontakt: 0163/259 1117, Alte Ziegelei 52, 53424 Bad Neuenahr-Ahrweiler.",
+  "description_for_human": "Professionelle psychologische Beratung und Psychotherapie nach Alfred Adler in Bad Neuenahr-Ahrweiler",
+  "logo_url": "https://www.manuela-rosenkranz.de/images/Logo_MR_negativ.svg",
+  "contact_email": "Beratung@manuela-rosenkranz.de",
+  "legal_info_url": "https://www.manuela-rosenkranz.de/#imprint"
+}
