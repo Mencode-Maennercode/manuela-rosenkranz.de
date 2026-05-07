@@ -1,0 +1,29 @@
+{
+  "name": "Manuela Rosenkranz - Individualpsychologische Beratung",
+  "short_name": "MR Beratung",
+  "description": "Individualpsychologische Beratung und therapeutische Seelsorge in Bad Neuenahr-Ahrweiler",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#171D2C",
+  "theme_color": "#9AB5D9",
+  "icons": [
+    {
+      "src": "images/MR_negativ.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "images/MR_negativ.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "images/Logo_MR_negativ.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
