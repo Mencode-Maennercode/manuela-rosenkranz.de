@@ -30,40 +30,62 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     
     // Privacy overlay functionality
+    // The privacy-agreement checkbox is the single source of truth:
+    // checked = consent given (form usable), unchecked = consent retracted (form hidden).
     if (privacyAgreement && acceptPrivacyBtn && privacyContent && contactFormContainer) {
-        // Enable/disable accept button based on checkbox
+
+        // Reflect the checkbox state on the "Kontaktformular freischalten" button
+        function updateAcceptButton() {
+            const checked = privacyAgreement.checked;
+            acceptPrivacyBtn.disabled = !checked;
+            acceptPrivacyBtn.style.opacity = checked ? '1' : '0.6';
+            acceptPrivacyBtn.style.cursor = checked ? 'pointer' : 'not-allowed';
+        }
+
+        // Consent given → collapse the privacy text and reveal the contact form
+        function revealForm() {
+            privacyContent.classList.add('collapsed');
+            if (togglePrivacyBtn) {
+                togglePrivacyBtn.style.display = 'flex';
+                togglePrivacyBtn.classList.add('collapsed');
+            }
+            contactFormContainer.style.display = 'block';
+            localStorage.setItem('privacyConsent', 'true');
+            localStorage.setItem('privacyConsentDate', new Date().toISOString());
+        }
+
+        // Consent retracted → hide the form and reset back to the initial gate state
+        function retractConsent() {
+            contactFormContainer.style.display = 'none';
+            privacyContent.classList.remove('collapsed');
+            if (togglePrivacyBtn) {
+                togglePrivacyBtn.style.display = 'none';
+                togglePrivacyBtn.classList.remove('collapsed');
+            }
+            localStorage.removeItem('privacyConsent');
+            localStorage.removeItem('privacyConsentDate');
+        }
+
+        // React live to every change of the checkbox — no refresh needed
         privacyAgreement.addEventListener('change', function() {
-            acceptPrivacyBtn.disabled = !this.checked;
-            acceptPrivacyBtn.style.opacity = this.checked ? '1' : '0.6';
-            acceptPrivacyBtn.style.cursor = this.checked ? 'pointer' : 'not-allowed';
-        });
-        
-        // Handle accept privacy button click
-        acceptPrivacyBtn.addEventListener('click', function() {
-            if (privacyAgreement.checked) {
-                // Collapse privacy section
-                privacyContent.classList.add('collapsed');
-                
-                // Show toggle button
-                if (togglePrivacyBtn) {
-                    togglePrivacyBtn.style.display = 'flex';
-                    togglePrivacyBtn.classList.add('collapsed');
-                }
-                
-                // Show contact form
-                contactFormContainer.style.display = 'block';
-                
-                // Store consent in localStorage
-                localStorage.setItem('privacyConsent', 'true');
-                localStorage.setItem('privacyConsentDate', new Date().toISOString());
+            updateAcceptButton();
+            if (!this.checked) {
+                // Unchecking immediately retracts consent and hides the form
+                retractConsent();
             }
         });
-        
-        // Handle toggle button click
+
+        // "Kontaktformular freischalten" reveals the form once consent is checked
+        acceptPrivacyBtn.addEventListener('click', function() {
+            if (privacyAgreement.checked) {
+                revealForm();
+            }
+        });
+
+        // Toggle button lets the user re-open / collapse the privacy summary again
         if (togglePrivacyBtn) {
             togglePrivacyBtn.addEventListener('click', function() {
                 const isCollapsed = privacyContent.classList.contains('collapsed');
-                
                 if (isCollapsed) {
                     privacyContent.classList.remove('collapsed');
                     togglePrivacyBtn.classList.remove('collapsed');
@@ -73,14 +95,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         }
-        
-        // Check if user has already consented
+
+        // Restore a previously given consent on page load
         if (localStorage.getItem('privacyConsent') === 'true') {
-            setTimeout(() => {
-                privacyAgreement.checked = true;
-                acceptPrivacyBtn.disabled = false;
-                acceptPrivacyBtn.click();
-            }, 100);
+            privacyAgreement.checked = true;
+            updateAcceptButton();
+            revealForm();
+        } else {
+            updateAcceptButton();
         }
     }
     
@@ -224,10 +246,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const email = document.getElementById('email').value;
             const phone = document.getElementById('phone').value;
             const message = document.getElementById('message').value;
-            const privacy = !!document.getElementById('privacy').value;
-            
-            if (!name || !email || !message || !privacy) {
-                showMobileNotification('Bitte füllen Sie alle Pflichtfelder aus und akzeptieren Sie die Datenschutzerklärung.', 'error');
+            const privacy = privacyAgreement ? privacyAgreement.checked : false;
+
+            if (!name || !email || !message) {
+                showMobileNotification('Bitte füllen Sie alle Pflichtfelder aus.', 'error');
+                return;
+            }
+
+            if (!privacy) {
+                showMobileNotification('Bitte akzeptieren Sie die Datenschutzerklärung, um Ihre Nachricht zu senden.', 'error');
                 return;
             }
             
