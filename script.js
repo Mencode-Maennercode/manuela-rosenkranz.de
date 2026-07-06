@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const email = document.getElementById('email').value;
             const phone = document.getElementById('phone').value;
             const message = document.getElementById('message').value;
-            const privacy = document.getElementById('privacy').checked;
+            const privacy = !!document.getElementById('privacy').value;
             
             if (!name || !email || !message || !privacy) {
                 showMobileNotification('Bitte füllen Sie alle Pflichtfelder aus und akzeptieren Sie die Datenschutzerklärung.', 'error');
