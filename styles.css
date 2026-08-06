@@ -434,7 +434,7 @@ img {
     z-index: 3;
     text-align: left;
     padding: 60px 0 40px;
-    max-width: 620px;
+    max-width: 1060px;
     margin: 0;
 }
 
@@ -667,6 +667,12 @@ img {
 .hero .hero-subtitle,
 .hero .quote-text {
     color: var(--color-primary);
+}
+
+/* Titel und Unterzeile sollen je auf einer Zeile stehen - eine spaetere
+   Regel deckelt die Unterzeile sonst auf 700px */
+.hero .hero-subtitle {
+    max-width: 100%;
 }
 
 .hero .quote-text::before,
