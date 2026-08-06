@@ -2350,6 +2350,45 @@ div.service-card.collapsible.open .service-content {
     text-decoration: underline;
 }
 
+.footer-section .social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 4px;
+    padding: 9px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 50px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    transition: var(--transition);
+}
+
+.footer-section .social-link svg {
+    flex-shrink: 0;
+}
+
+.footer-section .social-link:hover,
+.footer-section .social-link:focus-visible {
+    color: var(--color-white);
+    border-color: var(--color-secondary);
+    background: rgba(119, 161, 217, 0.12);
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+.footer-section .social-link:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+    .footer-section .social-link {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+}
+
 .footer-bottom {
     text-align: center;
     padding-top: 15px;
