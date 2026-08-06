@@ -346,43 +346,71 @@ img {
     right: 0;
     bottom: 0;
     z-index: 1;
-    display: none;
+    display: block;
+}
+
+.hero-background picture {
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
 .hero-background img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.3;
+    object-position: center 55%;
+    opacity: 1;
+    animation: heroImageFadeIn 1.8s ease-out both;
 }
 
+@keyframes heroImageFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(1.04);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Heller Verlauf von links: haelt den Textbereich so hell wie zuvor,
+   gibt das Foto nach rechts hin frei */
 .hero-overlay {
-    display: none;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(100deg,
+        rgba(248, 244, 243, 0.97) 0%,
+        rgba(248, 244, 243, 0.94) 30%,
+        rgba(248, 244, 243, 0.74) 46%,
+        rgba(248, 244, 243, 0.30) 64%,
+        rgba(248, 244, 243, 0) 80%);
+}
+
+/* .hero ist ein Flex-Container, der .container sonst auf Inhaltsbreite
+   schrumpfen laesst - dann waere der Text trotz margin:0 wieder mittig */
+.hero > .container {
+    width: 100%;
 }
 
 .hero-content {
     position: relative;
-    z-index: 2;
-    text-align: center;
-    padding: 60px 20px 40px;
-    max-width: 900px;
-    margin: 0 auto;
+    z-index: 3;
+    text-align: left;
+    padding: 60px 0 40px;
+    max-width: 620px;
+    margin: 0;
 }
 
 .hero-watermark {
-    position: absolute;
-    left: 15%;
-    top: 65%;
-    transform: translateY(-65%);
-    z-index: 1;
-    opacity: 0.08;
-    pointer-events: none;
-    padding: 20px;
-}
-
-.hero-watermark img {
-    width: 455px;
-    height: auto;
+    display: none;
 }
 
 @keyframes heroContentFadeIn {
@@ -510,13 +538,13 @@ img {
     font-size: clamp(1.2rem, 3vw, 1.6rem);
     color: var(--color-secondary);
     margin-bottom: 20px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 0;
+    margin-right: 0;
     font-weight: 300;
     opacity: 0;
     transform: translateY(20px);
     animation: subtitleSlideIn 1s ease-out 1s forwards;
-    text-align: center;
+    text-align: left;
     max-width: 100%;
 }
 
@@ -549,8 +577,8 @@ img {
 .hero-quote {
     position: relative;
     max-width: 500px;
-    margin: 60px auto 0;
-    text-align: center;
+    margin: 60px 0 0;
+    text-align: left;
     opacity: 0;
     transform: translateY(20px);
     animation: quoteSlideIn 1s ease-out 1.2s forwards;
@@ -632,7 +660,7 @@ img {
 .hero-buttons {
     display: flex;
     gap: 20px;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
     margin-top: 60px;
     opacity: 0;
@@ -668,10 +696,49 @@ img {
         gap: 12px;
         margin-top: 25px;
     }
-    
+
     .btn {
         padding: 16px 30px;
         font-size: 15px;
+    }
+}
+
+/* Hero auf Tablet/Handy: zentriertes Layout wie bisher, dazu ein
+   flaechiger heller Schleier statt des Verlaufs von links */
+@media (max-width: 900px) {
+    .hero-overlay {
+        background: linear-gradient(180deg,
+            rgba(248, 244, 243, 0.93) 0%,
+            rgba(248, 244, 243, 0.88) 50%,
+            rgba(248, 244, 243, 0.92) 100%);
+    }
+
+    .hero-content {
+        text-align: center;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 60px 20px 40px;
+    }
+
+    .hero-subtitle {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-quote {
+        margin: 60px auto 0;
+        text-align: center;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-background img {
+        animation: none;
     }
 }
 

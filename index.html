@@ -46,8 +46,8 @@
     
     <link rel="stylesheet" href="fonts/fonts.css">
     
-    <link rel="stylesheet" href="styles.css?v=2">
-    <link rel="stylesheet" href="responsive-mobile.css?v=2">
+    <link rel="stylesheet" href="styles.css?v=3">
+    <link rel="stylesheet" href="responsive-mobile.css?v=3">
     
     <script type="application/ld+json">
     {
@@ -278,16 +278,15 @@
     </nav>
 
     <section id="home" class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-background"></div>
-        <div class="hero-watermark">
-            <img src="MR.png" alt="">
+        <div class="hero-background">
+            <picture>
+                <source type="image/webp" srcset="images/hero-strand-800.webp 800w, images/hero-strand.webp 1448w" sizes="100vw">
+                <img src="images/hero-strand.jpg" srcset="images/hero-strand-800.jpg 800w, images/hero-strand.jpg 1448w" sizes="100vw" width="1448" height="1086" alt="" fetchpriority="high" decoding="async">
+            </picture>
         </div>
+        <div class="hero-overlay"></div>
         <div class="container">
             <div class="hero-content">
-                <div class="hero-logo">
-                    <img src="images/Logo_MR_negativ.svg" alt="Praxis Manuela Rosenkranz Logo">
-                </div>
                 <h1 class="hero-title">Herzlich willkommen in meiner Praxis</h1>
                 <p class="hero-subtitle">Individualpsychologische Beratung<br>&<br>therapeutische Seelsorge</p>
                 
