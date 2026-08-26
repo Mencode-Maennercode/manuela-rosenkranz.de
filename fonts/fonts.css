@@ -109,3 +109,19 @@
     font-display: swap;
     src: url('patrickhand-400.ttf') format('truetype');
 }
+
+/* Cormorant Garamond - nur fuer den Hinweiskasten "Mein Ansatz" */
+@font-face {
+    font-family: 'Cormorant Garamond';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('cormorantgaramond-400.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Cormorant Garamond';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('cormorantgaramond-500.woff2') format('woff2');
+}

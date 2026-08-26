@@ -1721,7 +1721,7 @@ div.service-card.collapsible.open .service-content {
 
 .approach {
     padding: 120px 0;
-    background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-beige) 100%);
+    background: linear-gradient(180deg, #F7F4EF 0%, #F1EDE6 100%);
     position: relative;
     overflow: hidden;
     opacity: 0;
@@ -1778,6 +1778,10 @@ div.service-card.collapsible.open .service-content {
     max-width: 700px;
     margin: 0 auto;
     line-height: 1.8;
+}
+
+.approach-intro p + p {
+    margin-top: 25px;
 }
 
 .approach-grid {
@@ -1886,20 +1890,31 @@ div.service-card.collapsible.open .service-content {
     margin-top: 40px;
 }
 
+/* Kasten 1:1 nach der Vorlage der Kundin - Masse aus dem Screenshot
+   nachgemessen: Radius 18px, Cormorant Garamond 500 mit 24,6px,
+   Zeilenabstand 36,7px, Laufweite 0,3px. Schriftfarbe ein tieferes,
+   blaueres Marineblau als der uebrige Text der Seite. */
 .conclusion-content {
-    background: #161c2c;
-    color: var(--color-white);
-    padding: 40px;
-    border-radius: 15px;
-    max-width: 800px;
+    background: linear-gradient(180deg,
+        rgba(252, 251, 248, 0.92) 0%,
+        rgba(246, 243, 238, 0.92) 100%);
+    color: #1E3A66;
+    padding: 54px 70px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 18px;
+    max-width: 780px;
     margin: 0 auto;
-    box-shadow: 0 15px 50px rgba(45, 64, 89, 0.2);
+    box-shadow: 0 12px 40px -10px rgba(25, 35, 55, 0.08);
 }
 
 .conclusion-content p {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    font-weight: 300;
+    font-family: 'Cormorant Garamond', var(--font-secondary);
+    font-size: 24.6px;
+    line-height: 1.49;
+    letter-spacing: 0.3px;
+    font-weight: 500;
+    color: #1E3A66;
+    text-align: center;
 }
 
 @media (max-width: 1024px) {
@@ -1955,11 +1970,18 @@ div.service-card.collapsible.open .service-content {
     }
     
     .conclusion-content {
-        padding: 30px 25px;
+        padding: 36px 28px;
+        border-radius: 16px;
     }
     
+    /* auf schmalen Schirmen bricht der Text von selbst um */
     .conclusion-content p {
-        font-size: 1.1rem;
+        font-size: 21px;
+        line-height: 1.55;
+    }
+    
+    .conclusion-content p br {
+        display: none;
     }
 }
 
@@ -2000,11 +2022,12 @@ div.service-card.collapsible.open .service-content {
     }
     
     .conclusion-content {
-        padding: 25px 20px;
+        padding: 28px 22px;
+        border-radius: 14px;
     }
     
     .conclusion-content p {
-        font-size: 1rem;
+        font-size: 19px;
     }
 }
 
