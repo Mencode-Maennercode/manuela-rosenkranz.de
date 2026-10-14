@@ -142,6 +142,7 @@ img {
     margin-top: -5px;
     margin-left: -25px;
     opacity: 1;
+    filter: brightness(1.2) contrast(1.15) saturate(1.5);
 }
 
 @media (max-width: 768px) {
@@ -1908,11 +1909,9 @@ div.service-card.collapsible.open .service-content {
 }
 
 .conclusion-content p {
-    font-family: 'Cormorant Garamond', var(--font-secondary);
-    font-size: 24.6px;
-    line-height: 1.49;
-    letter-spacing: 0.3px;
-    font-weight: 500;
+    font-family: inherit;
+    font-size: 1.2rem;
+    line-height: 1.8;
     color: #1E3A66;
     text-align: center;
 }
